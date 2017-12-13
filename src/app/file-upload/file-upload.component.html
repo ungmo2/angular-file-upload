@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <h1 class="text-center">Angular File upload</h1>
+      <form [formGroup]="form" (ngSubmit)="onSubmit(fileInput.files)">
+        <div class="form-group">
+          <img *ngIf="imageSrc" [src]="imageSrc" class="avatar">
+          <div class="btns clearfix">
+            <label class="btn btn-file btn-cancel pull-left">Pick an image
+              <input type="file" accept="image/*" (change)="onFileChange(fileInput.files)" #fileInput>
+            </label>
+            <button type="submit" class="btn btn-save pull-right" [disabled]="form.invalid || loading">
+              Save
+              <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+      <pre>{{ form.value | json }}</pre>
+      <pre>{{ result | json }}</pre>
+    </div>
+  </div>
+</div>
